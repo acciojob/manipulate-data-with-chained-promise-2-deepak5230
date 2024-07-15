@@ -20,10 +20,9 @@ function multiplyEvenNumbers(numbers) {
       const multipliedNumbers = numbers.map(number => number * 2);
       document.getElementById('output').textContent = `Multiplied Numbers: ${multipliedNumbers.join(', ')}`;
       resolve(multipliedNumbers);
-    }, 2000);
+    }, 1000);
   });
 }
-
 getNumbers()
   .then(numbers => {
     return filterOddNumbers(numbers);
