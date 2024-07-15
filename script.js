@@ -2,7 +2,7 @@ function getNumbers() {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve([1, 2, 3, 4]);
-    }, 3000);
+    }, 0);
   });
 }
 
@@ -22,7 +22,7 @@ function multiplyEvenNumbers(numbers) {
       const multipliedNumbers = numbers.map(number => number * 2);
       document.getElementById('output').textContent = multipliedNumbers.join(', ');
       resolve(multipliedNumbers);
-    }, 1000);
+    }, 2000);
   });
 }
 
