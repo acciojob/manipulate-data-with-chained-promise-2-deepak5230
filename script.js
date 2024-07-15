@@ -1,6 +1,8 @@
 function getNumbers() {
   return new Promise((resolve) => {
-    resolve([1, 2, 3, 4]);
+    setTimeout(() => {
+      resolve([1, 2, 3, 4]);
+    }, 3000);
   });
 }
 
@@ -8,7 +10,7 @@ function filterOddNumbers(numbers) {
   return new Promise((resolve) => {
     setTimeout(() => {
       const evenNumbers = numbers.filter(number => number % 2 === 0);
-      document.getElementById('output').textContent = `Even Numbers: ${evenNumbers.join(', ')}`;
+      document.getElementById('output').textContent = evenNumbers.join(', ');
       resolve(evenNumbers);
     }, 1000);
   });
@@ -18,11 +20,12 @@ function multiplyEvenNumbers(numbers) {
   return new Promise((resolve) => {
     setTimeout(() => {
       const multipliedNumbers = numbers.map(number => number * 2);
-      document.getElementById('output').textContent = `Multiplied Numbers: ${multipliedNumbers.join(', ')}`;
+      document.getElementById('output').textContent = multipliedNumbers.join(', ');
       resolve(multipliedNumbers);
     }, 1000);
   });
 }
+
 getNumbers()
   .then(numbers => {
     return filterOddNumbers(numbers);
