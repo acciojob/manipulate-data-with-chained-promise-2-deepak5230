@@ -1,38 +1,44 @@
-function getNumbers() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([1, 2, 3, 4]);
-    }, 0);
-  });
-}
+const inputArray = [1, 2, 3, 4];
 
-function filterOddNumbers(numbers) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const evenNumbers = numbers.filter(number => number % 2 === 0);
-      document.getElementById('output').textContent = evenNumbers.join(', ');
-      resolve(evenNumbers);
-    }, 1000);
-  });
-}
+const output = document.getElementById("output");
 
-function multiplyEvenNumbers(numbers) {
-  return new Promise((resolve) => {
+//console.log(output);
+
+//promise defination
+
+let myPromise = new Promise((resolve, reject) => {
+
+  setTimeout(() => resolve(inputArray), 1000);
+
+});
+
+myPromise
+
+  .then((arr) => {
+
+    const filterArr = arr.filter((elem) => elem % 2 == 0);
+
+    output.textContent = filterArr.join(",");
+
+    return filterArr;
+
+  })
+
+  .then((arr) => {
+
     setTimeout(() => {
-      const multipliedNumbers = numbers.map(number => number * 2);
-      document.getElementById('output').textContent = multipliedNumbers.join(', ');
-      resolve(multipliedNumbers);
+
+      const MultiplyArr = arr.map((elem) => elem * 2);
+
+      output.textContent = MultiplyArr.join(",");
+
     }, 2000);
-  });
-}
 
-getNumbers()
-  .then(numbers => {
-    return filterOddNumbers(numbers);
   })
-  .then(evenNumbers => {
-    return multiplyEvenNumbers(evenNumbers);
-  })
-  .catch(error => {
-    document.getElementById('output').textContent = `Error: ${error}`;
-  });
+
+  .catch((error) => console.log(error));
+
+
+
+
+
